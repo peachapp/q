@@ -19,7 +19,7 @@ module.exports = {
   /** 主题配置 */
   // 设置站点要使用的主题。如果不设置该选项，将会使用默认主题。
   theme: defaultTheme({
-    repo: "",
+    repo: "https://github.com/peachapp/q.git",
     // 导航栏
     navbar: [
       {
