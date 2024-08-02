@@ -1,0 +1,20 @@
+{
+  "name": "q",
+  "version": "1.0.0",
+  "description": "记录学习收获...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "keywords": [
+    "q",
+    "question"
+  ],
+  "author": "taotao.kang",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.46"
+  }
+}
