@@ -28,32 +28,26 @@ module.exports = {
       },
       {
         text: "前端",
-        link: "/HTML/index.md",
         children: [
           {
             text: "HTML",
-            // link: "/HTML/index.md",
-            link: "/HTML/html.md",
+            link: "/HTML/index.md",
           },
           {
             text: "CSS",
-            // link: "/CSS/index.md",
-            link: "/CSS/css.md",
+            link: "/CSS/index.md",
           },
           {
             text: "JAVASCRIPT",
-            // link: "/JAVASCRIPT/index.md",
-            link: "/JAVASCRIPT/js.md",
+            link: "/JAVASCRIPT/index.md",
           },
           {
             text: "VUE",
-            // link: "/VUE/index.md",
-            link: "/VUE/vue.md",
+            link: "/VUE/index.md",
           },
           {
             text: "REACT",
-            // link: "/REACT/index.md",
-            link: "/REACT/react.md",
+            link: "/REACT/index.md",
           },
         ],
       },
@@ -80,12 +74,30 @@ module.exports = {
       },
     ],
     // 侧边栏
-    sidebar: [
-      {
-        title: "HTML",
-        // link: "/HTML/index.md",
-        path: "/HTML/html.md",
-      },
-    ],
+    sidebar: {
+      "/HTML/": [
+        "W3C和Web标准",
+        "DOCTYPE",
+        "标准模式和怪异模式",
+        "H5和HTML5",
+        "HTML语义化",
+        "块级元素和行内元素",
+        "HTML标签",
+        "link和@import",
+        "src和href",
+        "title和alt",
+        "iframe",
+        "meta",
+        "SEO",
+        "微格式",
+        "网页开发和小程序开发",
+        "实现在图片的某个区域做到点击事件",
+        "前端开发必记单词",
+      ],
+      "/CSS/": ["", "css"],
+      "/JAVASCRIPT/": ["", "js"],
+      "/VUE/": ["", "vue"],
+      "/REACT/": ["", "react"],
+    },
   }),
 };
