@@ -9,7 +9,7 @@ module.exports = {
   // 站点的语言。它将会在最终渲染出的 HTML 中作为 <html> 标签的 lang 属性。
   lang: "zh-CN",
   // 站点的标题。它将会作为所有页面标题的后缀，并且在默认主题的导航栏中显示。
-  title: "桃桃康的博客 ！",
+  title: "🍑的博客 ！",
   // 站点的描述。它将会在最终渲染出的 HTML 中作为 <meta name="description" /> 标签的 content 属性。它会被每个页面的 Frontmatter 中的 description 字段覆盖。
   description: "...",
   // 在最终渲染出的 HTML 的 <head> 标签内加入的额外标签。
@@ -230,6 +230,7 @@ module.exports = {
         "手写diff算法",
         "源码部分",
         "vue源码深入剖析",
+        "vue3核心源码解析",
         "SPA",
         "mvvm和mvc",
         "vue性能优化",

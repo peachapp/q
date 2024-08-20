@@ -8,6 +8,7 @@
 4. 新增`Teleport`传送门。
 5. `destroyed`改名为`onUnmounted`了（`before`当然也改了）。
 6. `ref`属性支持函数了。
+7. `vue3`引入`tree-shaking`，通过编译阶段的静态分析，找到没有引入的模块并打上标记，打包的时候无用代码丢弃。
 
 `vue3`相对于`vue2`做的优化：
 

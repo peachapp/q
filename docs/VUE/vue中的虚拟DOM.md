@@ -4,7 +4,7 @@
 
 `vue`中的虚拟`DOM`是一种抽象层面的概念，它使得`vue`可以高效地更新`DOM`。虚拟`DOM`是由`vue`实例的`$el`属性表示的真实`DOM`元素。虚拟`DOM`的工作原理是：`vue`会在内存中维护一个表示`DOM`结构的树形数据，通常称之为`VNode`。当`vue`实例的数据发生变化时，`vue`会重新生成虚拟`DOM`，并比对新旧虚拟`DOM`之间的差异，最后只将变化的部分应用到真实的`DOM`上，而不是重新渲染整个视图。
 
-虚拟`DOM`的本质是`js`对象，虚拟`DOM`的三要素：`target（不可缺少）`、`attr`、`children`。`vue`中通过虚拟`DOM`，使用`document.createElement`创建真实的`DOM`。
+虚拟`DOM`的本质是用来描述`DOM`的`js`对象，虚拟`DOM`的三要素：`target（不可缺少）`、`attr`、`children`。`vue`中通过虚拟`DOM`，使用`document.createElement`创建真实的`DOM`。
 
 ```js
 let obj = {
