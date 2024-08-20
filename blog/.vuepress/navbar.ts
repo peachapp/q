@@ -2,6 +2,7 @@ import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
   "/",
+  /*
   "/demo/",
   {
     text: "博文",
@@ -44,9 +45,47 @@ export default navbar([
       "strawberry",
     ],
   },
+  */
   {
-    text: "V2 文档",
-    icon: "book",
-    link: "https://theme-hope.vuejs.press/zh/",
+    text: "前端",
+    children: [
+      {
+        text: "HTML",
+        link: "/HTML/index.md",
+      },
+      {
+        text: "CSS",
+        link: "/CSS/index.md",
+      },
+      {
+        text: "JAVASCRIPT",
+        link: "/JAVASCRIPT/index.md",
+      },
+      {
+        text: "VUE",
+        link: "/VUE/index.md",
+      },
+      {
+        text: "REACT",
+        link: "/REACT/index.md",
+      },
+    ],
+  },
+  {
+    text: "后端",
+    children: [
+      {
+        text: "NODE",
+        link: "/NODE/index.md",
+      },
+    ],
+  },
+  {
+    text: "数据库",
+    children: [{ text: "Mysql数据库", link: "" }],
+  },
+  {
+    text: "WEBGL",
+    link: "/WEBGL/index.md",
   },
 ]);

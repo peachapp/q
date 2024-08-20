@@ -7,7 +7,7 @@ export default hopeTheme({
   hostname: "https://mister-hope.github.io",
 
   author: {
-    name: "Mr.Hope",
+    name: "🍑",
     url: "https://mister-hope.com",
   },
 
@@ -15,7 +15,7 @@ export default hopeTheme({
 
   logo: "https://theme-hope-assets.vuejs.press/logo.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "https://github.com/peachapp/q.git",
 
   docsDir: "src",
 
@@ -26,7 +26,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "默认页脚",
+  footer: "© 2024 [🍑]. 祝您有美好的一天！",
   displayFooter: true,
 
   // 博客相关
