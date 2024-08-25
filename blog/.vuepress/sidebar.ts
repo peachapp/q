@@ -127,8 +127,8 @@ export default sidebar({
     "常见的请求方式",
     "跨域",
     "fetch",
-    "Promise",
-    "Generator",
+    "promise",
+    "generator",
     "async await",
     "事件循环机制",
     "CommonJS和ES6",
@@ -139,6 +139,7 @@ export default sidebar({
     "捕获异常",
     "前端监控",
     "进程和线程",
+    "代码执行结果"
   ],
   "/VUE/": [
     "vue本身的数据管理是什么样的",
@@ -177,7 +178,7 @@ export default sidebar({
     "vue编译原理",
     "diff算法",
     "手写diff算法",
-    "源码部分",
+    "手写代码vue2",
     "vue源码深入剖析",
     "vue3核心源码解析",
     "SPA",
@@ -187,5 +188,7 @@ export default sidebar({
     "将package.json中的所有依赖项更新到最新版本",
   ],
   "/REACT/": ["", "react"],
-
+  "/TOOL/": ["mac下管理node多版本工具"],
+  "/UI设计/": [],
+  "/BUGS/": ["防止按钮重复点击"],
 });

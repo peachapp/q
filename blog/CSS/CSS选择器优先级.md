@@ -34,7 +34,25 @@
 3. 相同特殊性值的声明，根据样式引入的顺序，后声明的规则优先级高（距离元素出现最近的）。
 4. 部分浏览器由于字节溢出问题出现的进位表现不做考虑。
 
-**总结：**
+测试：
+
+```html
+<!-- hello在页面上表现为红色，虽然蓝色样式虽然是后声明的，但是红色样式选择器的优先级更高，所以表现为红色 -->
+<style>
+  .box span {
+    color: red;
+  }
+  span {
+    color: blue;
+  }
+</style>
+
+<div class="box">
+  <span>hello</span>
+</div>
+```
+
+总结：
 
 1. 常用选择器优先级：`行内 > id > class > tag`。
 2. `!important`可以提升样式优先级，但不建议使用。如果`!important`被用于一个简写的样式属性，那么这条简写的样式属性所代表的子属性都会被应用上`!important`。 例如：`background: blue !important;`。

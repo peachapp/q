@@ -74,13 +74,13 @@ div {
 6. 水平垂直居中三。
 
 ```css
-/*利用flex布局 实际使用时应考虑兼容性*/
+/*利用flex布局和align-items: center;justify-content: center;实现 实际使用时应考虑兼容性*/
 .container {
   display: flex;
   align-items: center; /*垂直居中*/
   justify-content: center; /*水平居中*/
 }
-.containerdiv {
+.container div {
   width: 100px;
   height: 100px;
   background-color: pink; /*方便看效果*/
@@ -88,6 +88,67 @@ div {
 ```
 
 7. 水平垂直居中四。
+
+```css
+/*利用flex布局和align-items: center;和子元素margin: auto;实现 实际使用时应考虑兼容性*/
+.container {
+  display: flex;
+  align-items: center; /*垂直居中*/
+  /*justify-content: center; 水平居中*/
+}
+.container div {
+  margin: auto; /*水平居中 */
+  width: 100px;
+  height: 100px;
+  background-color: pink; /*方便看效果*/
+}
+```
+
+8. 水平垂直居中五。
+
+```css
+/* 利用grid布局和place-items: center;实现 */
+.container {
+  display: grid;
+  place-items: center;
+}
+
+.container div {
+  background: pink; /*方便看效果*/
+}
+```
+
+9. 水平垂直居中六。
+
+```css
+/* 利用grid布局和align-items: center;和子元素margin: auto;实现 */
+.container {
+  display: grid;
+  align-items: center;
+}
+
+.container div {
+  margin: auto;
+  background: pink; /*方便看效果*/
+}
+```
+
+10. 水平垂直居中七。
+
+```css
+/* 利用grid布局和align-items: center;justify-content: center;实现 */
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.container div {
+  background: pink; /*方便看效果*/
+}
+```
+
+11. 水平垂直居中八。
 
 ```css
 /*利用text-align:center和vertical-align:middle属性*/

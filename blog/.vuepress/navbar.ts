@@ -1,7 +1,7 @@
 import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
-  "/",
+  // "/",
   /*
   "/demo/",
   {
@@ -88,4 +88,16 @@ export default navbar([
     text: "WEBGL",
     link: "/WEBGL/index.md",
   },
+  {
+    text: "工具",
+    link: "/TOOL/index.md"
+  },
+  {
+    text: "UI设计",
+    link: "/UI/index.md"
+  },
+  {
+    text: "问题",
+    link: "/BUGS/index.md"
+  }
 ]);

@@ -27,13 +27,96 @@
 
 `vuex`使用单一状态树，`State`是`vuex`的基本数据，用来存储变量。
 
+在组件中获得`vuex state`：`store.state.count`，子组件能通过`this.$store`访问到。
+
+当一个组件需要获取多个状态的时候，将这些状态都声明为计算属性会有些重复和冗余。为了解决这个问题，我们可以使用`mapState`辅助函数帮助我们生成计算属性，让你少按几次键：
+
+```js
+import { mapState } from "vuex";
+
+export default {
+  // ...
+  computed: mapState({
+    // 箭头函数可使代码更简练
+    count: (state) => state.count,
+
+    // 传字符串参数 'count' 等同于 `state => state.count`
+    countAlias: "count",
+
+    // 为了能够使用 `this` 获取局部状态，必须使用常规函数
+    countPlusLocalState(state) {
+      return state.count + this.localCount;
+    },
+  }),
+};
+```
+
+当映射的计算属性的名称与`state`的子节点名称相同时，我们也可以给`mapState`传一个字符串数组。
+
+```js
+computed: mapState([
+  // 映射 this.count 为 store.state.count
+  "count",
+]);
+```
+
 ## `Getters`：类似于组件中的`computed`
 
 `Getters`从基本数据 (`State`) 派生的数据，相当于`State`的计算属性。
 
+在组件中获得`vuex getters`：`store.getters`，子组件能通过`this.$store`访问到。
+
+`mapGetters`辅助函数仅仅是将`store`中的`getter`映射到局部计算属性：
+
+```js
+import { mapGetters } from "vuex";
+
+export default {
+  // ...
+  computed: {
+    // 使用对象展开运算符将 getter 混入 computed 对象中
+    ...mapGetters([
+      "doneTodosCount",
+      "anotherGetter",
+      // ...
+    ]),
+  },
+};
+```
+
+如果你想将一个`getter`属性另取一个名字，使用对象形式：
+
+```js
+...mapGetters({
+  // 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
+  doneCount: 'doneTodosCount'
+})
+```
+
 ## `Mutations`：类似于组件中的`methods`
 
 `Mutations`是提交更新数据的方法，必须是同步的（如果异步操作需要使用`action`）。每个`Mutation`都有一个字符串的事件类型 (`type`) 和一个回调函数 (`handler`)。回调函数就是实际进行状态更改的地方，并且它会接受`State`作为第一个参数，提交载荷作为第二个参数。
+
+在组件中提交`mutation`：`this.$store.commit('xxx')`或者使用`mapMutations`辅助函数将组件中的 `methods`映射为`store.commit`调用（需要在根节点注入`store`）。
+
+```js
+import { mapMutations } from "vuex";
+
+export default {
+  // ...
+  methods: {
+    ...mapMutations([
+      "increment", // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+
+      // `mapMutations` 也支持载荷：
+      "incrementBy", // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
+    ]),
+    ...mapMutations({
+      add: "increment", // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+    }),
+  },
+};
+```
 
 ## `Actions`：用于提交`Mutations`
 
@@ -41,6 +124,27 @@
 
 1. `Actions`提交的是`Mutations`，而不是直接变更状态。
 2. `Actions`可以包含任意异步操作。
+
+在组件中分发`Action`：`this.$store.dispatch('xxx')`分发`action`，或者使用`mapActions`辅助函数将组件的`methods`映射为`store.dispatch`调用（需要先在根节点注入`store`）：
+
+```js
+import { mapActions } from "vuex";
+
+export default {
+  // ...
+  methods: {
+    ...mapActions([
+      "increment", // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+
+      // `mapActions` 也支持载荷：
+      "incrementBy", // 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`
+    ]),
+    ...mapActions({
+      add: "increment", // 将 `this.add()` 映射为 `this.$store.dispatch('increment')`
+    }),
+  },
+};
+```
 
 ## `Modules`：把以上四个属性再细分，让仓库更好管理
 
