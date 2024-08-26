@@ -1,29 +1,6 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
-  /*
-  "/": [
-    {
-      text: "如何使用",
-      icon: "laptop-code",
-      prefix: "demo/",
-      link: "demo/",
-      children: "structure",
-    },
-    {
-      text: "文章",
-      icon: "book",
-      prefix: "posts/",
-      children: "structure",
-    },
-    "intro",
-    {
-      text: "幻灯片",
-      icon: "person-chalkboard",
-      link: "https://plugin-md-enhance.vuejs.press/zh/guide/content/revealjs/demo.html",
-    },
-  ],
-  */
   "/HTML/": [
     "W3C和Web标准",
     "DOCTYPE",
@@ -188,8 +165,10 @@ export default sidebar({
     "vue首屏渲染优化",
     "将package.json中的所有依赖项更新到最新版本",
   ],
-  "/REACT/": ["", "react"],
+  "/REACT/": ["react"],
+  "/NODE/": [],
+  "/WEBGL/": [],
   "/TOOL/": ["mac下管理node多版本工具"],
-  "/UI设计/": [],
+  "/UI/": ["figma"],
   "/BUGS/": ["防止按钮重复点击", "window.open打开链接修改窗口标题"],
 });

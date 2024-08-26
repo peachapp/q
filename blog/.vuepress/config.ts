@@ -13,7 +13,7 @@ export default defineUserConfig({
   // 站点的描述。它将会在最终渲染出的 HTML 中作为 <meta name="description" /> 标签的 content 属性。它会被每个页面的 Frontmatter 中的 description 字段覆盖。
   description: "...",
   // 在最终渲染出的 HTML 的 <head> 标签内加入的额外标签。
-  head: [["link", { rel: "icon", href: "/images/logo.png" }]],
+  head: [["link", { rel: "icon", href: "logo.svg" }]],
   // 多语言支持的各个语言 locales。
   locales: {},
   theme,

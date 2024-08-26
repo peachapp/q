@@ -1,7 +1,5 @@
 # 手写`diff`算法
 
-https://github.com/peachapp/daily/tree/main/example/VueDiff
-
 搭建环境：
 
 ```

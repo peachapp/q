@@ -4,6 +4,8 @@ title: react 面试
 description: react 面试题收录
 ----->
 
+# react
+
 ## 为什么函数式组件不能用 this
 
 this 指的是组件的实例，函数式组件没有实例，所以不能用 this
@@ -568,68 +570,61 @@ mobx 的核心思想：状态变化引起的副作用应该被自动触发
 1. 应用逻辑只需要修改状态数据即可，mobx 会自动触发些缓存，渲染 UI 等这些业务经历的副作用，无需人工干预。
 2. 副作用依赖哪些状态数据是被自动收集的，比如某个副作用依赖 A 和 B，那么如果状态 C 发生变化，这个副作用是不会被触发的，这是 mobx 最吸引人的特性之一，也是 mobx 能够轻易优化渲染性能的关键所在。
 
-
 ## 面试题
-1.redux中间件的原理是什么？
 
-2.你会把数据统一放到redux中管理，还是共享数据放在redux中管理？
+1.redux 中间件的原理是什么？
+
+2.你会把数据统一放到 redux 中管理，还是共享数据放在 redux 中管理？
 Immutable
-3.componentWillReceiveProps的调用时机
+3.componentWillReceiveProps 的调用时机
 
-4.react性能优化的最佳实践
+4.react 性能优化的最佳实践
 
-5.虚拟dom是什么？为什么虚拟dom会提升代码性能？
-js对象
-6.webpack中，是借助loader完成的jsx代码的转化，还是babel？
-Babel-preset-react
-7.调用setState后，发生了什么？
+5.虚拟 dom 是什么？为什么虚拟 dom 会提升代码性能？
+js 对象
+6.webpack 中，是借助 loader 完成的 jsx 代码的转化，还是 babel？
+Babel-preset-react 7.调用 setState 后，发生了什么？
 
-8.setState是异步的，这个点你在什么时候遇到过坑？
+8.setState 是异步的，这个点你在什么时候遇到过坑？
 
-9.refs的作用是什么，你在什么业务场景下使用过refs？
+9.refs 的作用是什么，你在什么业务场景下使用过 refs？
 获取元素的尺寸。比如做放大镜
-10.ref是一个函数，有什么好处？
-防止内存泄漏
-11.高阶组件你是怎么理解的，它本质是一个什么东西？
+10.ref 是一个函数，有什么好处？
+防止内存泄漏 11.高阶组件你是怎么理解的，它本质是一个什么东西？
 
 12.受控组件与非受控组件的区别
 
-13.函数组件和hooks
+13.函数组件和 hooks
 
-14.this指向问题你一般怎么解决
+14.this 指向问题你一般怎么解决
 
 15.函数组件怎么做性能优化
-React.memo包装一下 相当于PureComponent
-16.哪个生命周期里发送ajax?
+React.memo 包装一下 相当于 PureComponent 16.哪个生命周期里发送 ajax?
 componentDidMount
-componentWillMount在新版本react中已经被废弃了
-ssr项目时，componentWillMount要做服务器端数据的获取，所以不能被占用
-17.ssr的原理是什么？
-借助虚拟dom在服务器端执行react代码
-18.redux-saga的设计思想是什么？什么是sideEffcts？
+componentWillMount 在新版本 react 中已经被废弃了
+ssr 项目时，componentWillMount 要做服务器端数据的获取，所以不能被占用
+17.ssr 的原理是什么？
+借助虚拟 dom 在服务器端执行 react 代码
+18.redux-saga 的设计思想是什么？什么是 sideEffcts？
 
-19.react、jQuery、Vue是否有可能共存在一个项目中？
-可以
-20.组件是什么？类是什么？类被编译成什么？
+19.react、jQuery、Vue 是否有可能共存在一个项目中？
+可以 20.组件是什么？类是什么？类被编译成什么？
 //模块 webpack
 //组件指的是页面的一部分
-//类是一个构造函数
-21.你是如何跟着社区成长的？
-Twitter
-22.如何避免ajax数据重新获取？
-redux状态管理
-23.react-router4的核心思想是什么？和3有什么区别？
- 路由4先进灵活
-24.immutable.js和redux的最佳实践？
+//类是一个构造函数 21.你是如何跟着社区成长的？
+Twitter 22.如何避免 ajax 数据重新获取？
+redux 状态管理
+23.react-router4 的核心思想是什么？和 3 有什么区别？
+路由 4 先进灵活
+24.immutable.js 和 redux 的最佳实践？
 
-25.reselect是做什么使用的
+25.reselect 是做什么使用的
 计算属性
-26.react-router的基本原理，hashHistory，browserHistory
-browserHistory需要后端服务器配合，hashHistory不需要
-27.什么情况下使用异步组件
-Reloadable库 路由懒加载、按需加载
+26.react-router 的基本原理，hashHistory，browserHistory
+browserHistory 需要后端服务器配合，hashHistory 不需要 27.什么情况下使用异步组件
+Reloadable 库 路由懒加载、按需加载
 import ('./home/header').then
 Require.ensure
-28.xss攻击在react中如何防范
-DangerouslySetInnerHTML={{_html:'<script>alert(1)</script>'}}
+28.xss 攻击在 react 中如何防范
+`DangerouslySetInnerHTML={{_html:<script>alert(1)</script>'}}`
 29.getDeivedStateFromProps,getSnapshotBeforeUpdate
