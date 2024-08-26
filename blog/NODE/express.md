@@ -140,21 +140,21 @@ router.get("/userList", async (req, res, next) => {
 
 ##### 问题描述：Mac 使用 Navicat 客户端连接 Mysql 报错：Client does not support authentication protocol requested by server; consider upgrading MySQL client
 
-![alt mysql](./images/0001.jpg "问题描述")
+![问题描述](./images/0001.jpg)
 
 ##### 解决方案：
 
 1. 在系统偏好设置找到 Mysql
 
-![alt mysql](./images/0002.jpg "在系统偏好设置找到 Mysql")
+![在系统偏好设置找到 Mysql](./images/0002.jpg)
 
 2. 停掉 Mysql 服务，点击进入"initialize dadabase"页面
 
-![alt mysql](./images/0003.jpg "在系统偏好设置找到 Mysql")
+![停掉 Mysql 服务，点击进入"initialize dadabase"页面](./images/0003.jpg)
 
 3. 选择第二项然后输入 Mysql 新密码，点击"ok"
 
-![alt mysql](./images/0004.jpg "在系统偏好设置找到 Mysql")
+![选择第二项然后输入 Mysql 新密码，点击"ok"](./images/0004.jpg)
 
 4. 重新启动 Mysql 服务
 

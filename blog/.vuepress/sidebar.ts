@@ -143,6 +143,7 @@ export default sidebar({
   ],
   "/VUE/": [
     "vue本身的数据管理是什么样的",
+    "单项数据流",
     "props和data",
     "computed和methods",
     "computed和watch",
@@ -190,5 +191,5 @@ export default sidebar({
   "/REACT/": ["", "react"],
   "/TOOL/": ["mac下管理node多版本工具"],
   "/UI设计/": [],
-  "/BUGS/": ["防止按钮重复点击"],
+  "/BUGS/": ["防止按钮重复点击", "window.open打开链接修改窗口标题"],
 });
