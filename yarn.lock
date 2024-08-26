@@ -516,6 +516,11 @@
   dependencies:
     "@vue/shared" "3.4.38"
 
+"@vue/repl@^4.1.1", "@vue/repl@^4.3.1":
+  version "4.3.1"
+  resolved "https://packages.aliyun.com/61cbc6851ccc3a1faae0b76e/npm/npm-registry/@vue/repl/-/repl-4.3.1.tgz"
+  integrity sha512-yzUuLhR+MqOGBDES+xbnm27SfPIEv7XKwhFWWpQhL7HUbXj77GVu+x50Q56JhCWWKTUJzk9MOvAn7bSgdvB5og==
+
 "@vue/runtime-core@3.4.38":
   version "3.4.38"
   resolved "https://registry.npmmirror.com/@vue/runtime-core/-/runtime-core-3.4.38.tgz"

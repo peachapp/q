@@ -166,9 +166,10 @@ export default sidebar({
     "将package.json中的所有依赖项更新到最新版本",
   ],
   "/REACT/": ["react"],
+  "/UNIAPP和WX/": ["uniapp和vue", "使用promise封装uni.request请求", "微信小程序支付详细流程"],
   "/NODE/": [],
   "/WEBGL/": [],
   "/TOOL/": ["mac下管理node多版本工具"],
   "/UI/": ["figma"],
-  "/BUGS/": ["防止按钮重复点击", "window.open打开链接修改窗口标题"],
+  "/BUGS/": ["防止按钮重复点击", "window.open打开链接修改窗口标题", "移动端上拉加载分页数据时，删除一条数据导致的问题"],
 });
