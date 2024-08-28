@@ -1,4 +1,4 @@
-# 动态路由
+# `vue`动态路由
 
 动态路由主要通过两个方法实现：`router.addRoute()`和`router.removeRoute()`。
 

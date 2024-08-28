@@ -43,6 +43,9 @@
 - 如果加入了`keep-alive`，第一次加载组件触发的生命周期：`beforeCreate`、`created`、`beforeMount`、`mounted`、`activated`。
 - 如果加入了`keep-alive`，第二次或第`N`次加载组件触发的生命周期：`activated`。
 
-## `vue`父子组件加载时生命周期执行顺序
+## `vue`父子组件生命周期执行顺序
 
-父组件`beforeCreate` --> 父组件`created` --> 父组件`beforeMount` --> 子组件`beforeCreate` --> 子组件`created` --> 子组件`beforeMount` --> 子组件`mounted` -> 父组件`mounted`。
+- 加载渲染过程：父组件`beforeCreate` --> 父组件`created` --> 父组件`beforeMount` --> 子组件`beforeCreate` --> 子组件`created` --> 子组件`beforeMount` --> 子组件`mounted` -> 父组件`mounted`。
+- 子组件更新过程：父组件`beforeUpdate` --> 子组件`beforeUpdate` --> 子组件`updated` --> 父组件`updated`。
+- 父组件更新过程：父组件`beforeUpdate` --> 父组件`updated`。
+- 销毁过程：父组件`beforeDestroy` --> 子组件`beforeDestroy` --> 子组件`destroyed` --> 父组件`destroyed`。

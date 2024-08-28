@@ -1,3 +1,10 @@
+---
+category:
+  - js
+tag:
+  - 遇到过的问题
+---
+
 # `window.open`打开链接修改窗口标题
 
 ```js
