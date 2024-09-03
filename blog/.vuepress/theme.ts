@@ -13,7 +13,7 @@ export default hopeTheme({
 
   iconAssets: "fontawesome-with-brands",
 
-  // logo: "logo.svg",
+  logo: "logo.svg",
 
   repo: "https://github.com/peachapp/q.git",
 

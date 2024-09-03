@@ -56,3 +56,105 @@
 
 1. 在`finally`中调用这个函数。
 2. `resolve`和`reject`中分别调用这个函数。
+
+## `Promise.race`
+
+`Promise.race()`方法接收一个包含多个`Promise`对象的可迭代对象，并返回一个新的`Promise`对象，该`Promise`对象在多个`Promise`中任意一个`Promise`对象状态变为`fulfilled`或`rejected`时立即返回该`Promise`对象的值或原因。
+
+使用场景：
+
+`Promise.race()`方法适用于多个异步请求之间的竞争场景。如果我们需要同时向多个`API`发送请求，但是只有一个请求的响应时间是关键的，那么我们可以使用 `Promise.race()`方法来优化请求时间，提高效率。
+
+```js
+const fetchFromAPI1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Data from API 1");
+  }, 1000);
+});
+const fetchFromAPI2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Data from API 2");
+  }, 500);
+});
+Promise.race([fetchFromAPI1, fetchFromAPI2]).then((result) => {
+  console.log(result); // Data from API 2
+});
+```
+
+错误处理：
+
+在使用`Promise.race()`方法时，如果任何一个`Promise`对象的状态变为`rejected`，那么`Promise.race()`方法会立即返回该`Promise`对象的原因。因此，我们需要注意错误处理。
+
+下面是一个例子，在该例子中，我们使用`Promise.race()`方法来获取两个`Promise`对象的解决结果，并使用`.catch()`方法来捕获错误：
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Promise 1 resolved");
+  }, 2000);
+});
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject("Promise 2 rejected");
+  }, 1000);
+});
+Promise.race([promise1, promise2])
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+// Promise.race的结果是Promise 2 rejected，并且该结果被.catch方法捕获。
+```
+
+添加超时功能：
+
+我们可以使用`Promise.race()`方法来添加超时功能。例如，如果我们向某个`API`发送请求，但是该`API`的响应时间过长，我们可以使用`Promise.race()` 方法来设置请求的超时时间。 下面是一个例子，我们使用`Promise.race()`方法来发送请求并在 3 秒内获取响应。如果请求未能在 3 秒内完成，我们将返回超时错误：
+
+```js
+const timeout = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject("Request timed out");
+  }, 3000);
+});
+const fetchFromAPI = new Promise((resolve, reject) => {
+  // 发送API请求
+});
+Promise.race([fetchFromAPI, timeout])
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+```
+
+取消异步操作：
+
+在某些情况下，我们可能需要取消某个异步操作。例如，如果我们正在下载一个大文件，但用户决定取消下载操作，我们可以使用`Promise.race()`方法来取消下载操作。
+
+下面是一个例子，我们使用`Promise.race()`方法来下载一个大文件，并将其作为一个`Promise`对象返回。如果用户点击取消按钮，则会调用`cancelDownload()`方法并取消下载操作：
+
+```js
+let downloadCancelled = false;
+const cancelDownload = () => {
+  downloadCancelled = true;
+};
+const downloadFile = new Promise((resolve, reject) => {
+  // 下载大文件
+});
+const cancel = new Promise((resolve, reject) => {
+  while (!downloadCancelled) {
+    // 等待用户点击取消按钮
+  }
+  resolve("Download cancelled");
+});
+Promise.race([downloadFile, cancel])
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+```
