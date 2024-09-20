@@ -47,9 +47,22 @@ export default navbar([
   //   children: [{ text: "Mysql数据库", link: "" }],
   // },
   {
-    text: "WEBGL",
+    text: "可视化",
     icon: "cube",
-    link: "/WEBGL/index.md",
+    children: [
+      {
+        text: "CANVAS",
+        link: "/CANVAS/index.md",
+      },
+      {
+        text: "WEBGL",
+        link: "/WEBGL/index.md",
+      },
+      {
+        text: "ECHARTS",
+        link: "/ECHARTS/index.md",
+      },
+    ],
   },
   {
     text: "工具",

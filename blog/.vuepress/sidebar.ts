@@ -1,6 +1,7 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
+  // 前端
   "/HTML/": [
     "W3C和Web标准",
     "DOCTYPE",
@@ -14,7 +15,6 @@ export default sidebar({
     "title和alt",
     "常用的图片格式",
     "iframe",
-    "canvas2d",
     "meta",
     "SEO",
     "微格式",
@@ -114,6 +114,10 @@ export default sidebar({
     "CommonJS和ES6",
     "一次渲染10w条数据",
     "移动端上拉加载下拉刷新",
+    "WebWorker",
+    "WebSocket",
+    "图片懒加载",
+    "分片加载",
     "localhost和127.0.0.1的区别",
     "从输入一个url到浏览器页面展示经历哪些过程",
     "页面重定向",
@@ -207,10 +211,20 @@ export default sidebar({
     "weixinjs-sdk",
     "微信小程序支付详细流程",
   ],
+  // 后端
   "/NODE/": [],
+  // 数据库
+  // 可视化
+  "/CANVAS/": [
+    "canvas2d",
+  ],
   "/WEBGL/": [],
+  "/ECHARTS/": [],
+  // 工具
   "/TOOL/": ["mac下管理node多版本工具"],
+  // UI设计
   "/UI/": ["figma"],
+  // 问题
   "/BUGS/": [
     "防止按钮重复点击",
     "window.open打开链接修改窗口标题",
