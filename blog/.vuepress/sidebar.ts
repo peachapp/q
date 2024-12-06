@@ -1,6 +1,7 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar({
+  // 前端
   "/HTML/": [
     "W3C和Web标准",
     "DOCTYPE",
@@ -14,7 +15,6 @@ export default sidebar({
     "title和alt",
     "常用的图片格式",
     "iframe",
-    "canvas2d",
     "meta",
     "SEO",
     "微格式",
@@ -114,6 +114,10 @@ export default sidebar({
     "CommonJS和ES6",
     "一次渲染10w条数据",
     "移动端上拉加载下拉刷新",
+    "WebWorker",
+    "WebSocket",
+    "图片懒加载",
+    "分片加载",
     "localhost和127.0.0.1的区别",
     "从输入一个url到浏览器页面展示经历哪些过程",
     "页面重定向",
@@ -136,7 +140,7 @@ export default sidebar({
     "ref属性",
     "slot插槽",
     "scoped",
-    "样式穿透",
+    "样式穿透（CSS穿透）",
     "nextTick",
     "keep alive",
     "vue内置指令",
@@ -206,11 +210,22 @@ export default sidebar({
     "使用promise封装uni.request请求",
     "weixinjs-sdk",
     "微信小程序支付详细流程",
+    "小程序分包",
   ],
+  // 后端
   "/NODE/": [],
+  // 数据库
+  // 可视化
+  "/CANVAS/": [
+    "canvas2d",
+  ],
   "/WEBGL/": [],
+  "/ECHARTS/": [],
+  // 工具
   "/TOOL/": ["mac下管理node多版本工具"],
+  // UI设计
   "/UI/": ["figma"],
+  // 问题
   "/BUGS/": [
     "防止按钮重复点击",
     "window.open打开链接修改窗口标题",
@@ -220,5 +235,25 @@ export default sidebar({
     "h5唤起app",
     "文件夹上传",
     "password input浏览器自动填充密码",
+    "js超过Number最大值的数怎么处理",
+    "如何解决页面请求接口大规模并发问题",
+    "大文件上传",
+    "在前端怎么实现页面截图",
+    "移动端适配问题如何解决",
+    "如何修改第三方npm包",
+    "使用同一个链接，实现PC打开是web应用，手机打开是h5应用",
+    "当QPS达到峰值时，该如何处理",
+    "如何实现网页加载进度条",
+    "前端水印功能",
+    "web应用中如何对静态资源加载失败的场景做降级处理",
+    "怎样设计一个全站请求耗时统计工具",
+    "说说对函数式编程思想的理解",
+    "说说对DNS协议的理解",
+    "怎么实现一个电影票选座功能",
+    "说说图片性能优化的方案",
+    "移动端上拉加载，下拉刷新实现方案",
+    "深度SEO优化",
+    "在window对象上频繁绑定内容，有什么风险",
+    "服务端渲染（SSR）与前后端同构技术原理揭秘"
   ],
 });
