@@ -1,5 +1,7 @@
 # `canvas2d`
 
+[参考文章](https://juejin.cn/column/7077005111989387271)
+
 `canvas`是`HTML5`中新增的一种标签元素，用来在网页上绘制图形，包含了很多方法。
 
 `canvas`标签的宽和高使用属性设置，用`css`的样式设置会导致画布失真。
@@ -127,6 +129,9 @@ ctx.fillText(str, x, y);
 // 设置文本水平方向对齐方式，参数有start（默认）、end（文字都在起始坐标x轴左边）、center
 // 注意center表示基于起始坐标x轴居中，此时想让文本在整个canvas居中，设置fillText的x值为canvas的宽度一半即可
 ctx.textAlign = "center";
+
+// 设置文本垂直方向对齐方式
+ctx.textBaseline = "middle";
 ```
 
 ## 颜色渐变
@@ -396,8 +401,8 @@ var num = -1;
 drawfont.onclick = function () {
   ctx.font = "20px 宋体";
   ctx.fillStyle = "red";
-  ctx.fillText("hello canvas", 20, 25);
   ctx.textAlign = "center";
+  ctx.fillText("hello canvas", 250, 25);
   ctx.stroke();
   ctx.fill();
   if (num % 2 === 0) {
