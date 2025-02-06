@@ -78,5 +78,10 @@ export default navbar([
     text: "问题",
     icon: "bug",
     link: "/BUGS/index.md"
+  },
+  {
+    text: "PHP",
+    icon: "pen-to-square",
+    link: "/PHP/index.md"
   }
 ]);
