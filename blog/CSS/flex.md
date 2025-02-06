@@ -23,7 +23,7 @@
 2. `flex-grow`属性定义项目的放大比例，默认为`0`，即如果存在剩余空间，也不放大。
 3. `flex-shrink`属性定义了项目的缩小比例，默认为`1`，即如果空间不足，该项目将缩小。
 4. `flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为`auto`，即项目的本来大小。
-5. `flex`属性是`flex-grow`属性，`flex-shrink`属性和`flex-basis`属性的简写，默认值为`0 1 auto`。
+5. `flex`属性是`flex-grow`属性，`flex-shrink`属性和`flex-basis`属性的简写，默认值为`0 1 auto`；`flex: 1;`等同于`‌flex-grow: 1; flex-shrink: 1; flex-basis: 0%‌`。
 6. `align-self`属性允许单个项目有与其他项目不一样的对齐方式，可覆盖`align-items`属性。默认值为`auto`，表示继承父元素的`align-items`属性，如果没有父元素，则等同于`stretch`。
 
 总结：

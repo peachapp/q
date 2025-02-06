@@ -56,6 +56,7 @@ export default sidebar({
     "div居中",
     "双飞翼和圣杯布局",
     "满屏品字布局",
+    "瀑布流布局",
     "CSS多列等高",
     "全屏滚动的原理",
     "纯CSS创建一个三角形的原理",
@@ -111,12 +112,14 @@ export default sidebar({
     "generator",
     "async await",
     "事件循环机制",
+    "本地存储",
     "CommonJS和ES6",
     "一次渲染10w条数据",
     "移动端上拉加载下拉刷新",
     "WebWorker",
     "WebSocket",
     "图片懒加载",
+    "分片上传",
     "分片加载",
     "localhost和127.0.0.1的区别",
     "从输入一个url到浏览器页面展示经历哪些过程",
@@ -124,6 +127,7 @@ export default sidebar({
     "捕获异常",
     "前端监控",
     "进程和线程",
+    "长链接方案",
     "代码执行结果",
     "jquery",
   ],
@@ -209,6 +213,7 @@ export default sidebar({
     "uniapp和vue",
     "使用promise封装uni.request请求",
     "weixinjs-sdk",
+    "微信小程序生命周期",
     "微信小程序支付详细流程",
     "小程序分包",
   ],
@@ -254,6 +259,13 @@ export default sidebar({
     "移动端上拉加载，下拉刷新实现方案",
     "深度SEO优化",
     "在window对象上频繁绑定内容，有什么风险",
-    "服务端渲染（SSR）与前后端同构技术原理揭秘"
+    "服务端渲染（SSR）与前后端同构技术原理揭秘",
+    "前端大屏",
+    "前端直播技术",
   ],
+  "/PHP/": [
+    "基础知识",
+    "yii2",
+    "-> 、=>、::、$this->四种符号"
+  ]
 });
