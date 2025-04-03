@@ -112,6 +112,7 @@ export default sidebar({
     "generator",
     "async await",
     "事件循环机制",
+    "setTimeout和setImmediate和process.nextTick",
     "本地存储",
     "CommonJS和ES6",
     "一次渲染10w条数据",
@@ -129,6 +130,8 @@ export default sidebar({
     "进程和线程",
     "长链接方案",
     "代码执行结果",
+    "ES6",
+    "ES7到ES13",
     "jquery",
   ],
   "/VUE/": [
@@ -228,8 +231,11 @@ export default sidebar({
   "/ECHARTS/": [],
   // 工具
   "/TOOL/": ["mac下管理node多版本工具"],
-  // UI设计
-  "/UI/": ["figma"],
+  // 产品与UI设计
+  "/产品与UI设计/": [
+    "figma",
+    "APP开发之账号注册方式"
+  ],
   // 问题
   "/BUGS/": [
     "防止按钮重复点击",

@@ -70,9 +70,9 @@ export default navbar([
     link: "/TOOL/index.md"
   },
   {
-    text: "UI设计",
+    text: "产品与UI设计",
     icon: "palette",
-    link: "/UI/index.md"
+    link: "/产品与UI设计/index.md"
   },
   {
     text: "问题",
