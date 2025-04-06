@@ -1,4 +1,5 @@
 import { hopeTheme } from "vuepress-theme-hope";
+// TODO: 参考https://mister-hope.com
 
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
@@ -26,7 +27,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "© 2024 [🍑]. 祝您有美好的一天！",
+  footer: "© 2025 [🍑]. 祝您有美好的一天！",
   displayFooter: true,
 
   // 博客相关

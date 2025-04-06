@@ -36,6 +36,94 @@
 
 对于容器中的项目，我们可以使用`order`属性来指定项目的排列顺序。还可以使用`flex-grow`来指定当排列空间有剩余的时候，项目的放大比例。还可以使用`flex-shrink`来指定当排列空间不足时，项目的缩小比例。
 
+## 使用 flex 排版来解决一下当年的 CSS 三大经典问题：
+
+### 垂直居中：
+
+思路是创建一个只有一行的 flexbox，然后用`align-items:center;`和`align-content:center;`来保证行位于容器中，元素位于行中。
+
+```html
+<div id="parent">
+  <div id="child"></div>
+</div>
+```
+
+```css
+#parent {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  outline: solid 1px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+#child {
+  width: 100px;
+  height: 100px;
+  outline: solid 1px;
+}
+```
+
+### 两列等高：
+
+思路是创建一个只有一行的 flexbox，然后用`stretch`属性让每个元素高度都等于行高。
+
+```html
+<div class="parent">
+  <div class="child" style="height:300px;"></div>
+  <div class="child"></div>
+</div>
+<br />
+<div class="parent">
+  <div class="child"></div>
+  <div class="child" style="height:300px;"></div>
+</div>
+```
+
+```css
+.parent {
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  align-content: center;
+  align-items: stretch;
+}
+.child {
+  width: 100px;
+  outline: solid 1px;
+}
+```
+
+### 自适应宽：
+
+```html
+<div class="parent">
+  <div class="child1"></div>
+  <div class="child2"></div>
+</div>
+```
+
+```css
+.parent {
+  display: flex;
+  width: 300px;
+  height: 200px;
+  background-color: pink;
+}
+.child1 {
+  width: 100px;
+  background-color: lightblue;
+}
+.child2 {
+  width: 100px;
+  flex: 1;
+  outline: solid 1px;
+}
+```
+
+这个是 Flex 设计的基本能力了，给要自适应的元素添加 flex 属性即可。
+
 [《Flex 布局教程：语法篇》](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
 [《Flex 布局教程：实例篇》](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
