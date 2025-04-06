@@ -6,6 +6,8 @@ description: express使用收录
 
 # express
 
+## 项目搭建与启动
+
 ### 下载安装 express。命令行语句
 
 ```sheel
@@ -61,6 +63,8 @@ npm install nodemon
 "start": "nodemon ./bin/www"
 ```
 
+## 与数据库连接
+
 ### 连接 MySQL 数据库
 
 先安装 mysql
@@ -69,40 +73,36 @@ npm install nodemon
 npm install mysql
 ```
 
-然后封装数据库连接模块，在根目录下新建一个 utils 文件夹, 新建一个 db.config.js，与 db.js 内容如下:
-
-```js
-// db.config.js
-// 创建mysql连接
-module.exports = {
-  host: "localhost", // 服务器地址
-  user: "*****", // mysql用户名称
-  password: "**********", // mysql用户密码
-  port: "3306", // 端口
-  database: "onepiece", // 数据库名称
-};
-```
+然后封装数据库连接模块，在根目录下新建一个 utils 文件夹, 新建一个 db.js 内容如下:
 
 ```js
 // db.js
 const mysql = require("mysql");
-const dbConfig = require("./db.config");
+
+// 创建mysql连接
+const dbConfig = {
+  host: "localhost", // 服务器地址
+  user: "root", // mysql用户名称
+  password: "sql123456", // mysql用户密码
+  port: "3306", // 端口
+  database: "youjie", // 数据库名称
+};
 
 module.exports = (sql, params) => {
   return new Promise((resolve, reject) => {
-    //每次使用的时候需要创建链接，数据操作完成之后要关闭连接
+    // 每次使用的时候需要创建链接，数据操作完成之后要关闭连接
     const connection = mysql.createConnection(dbConfig);
     connection.connect((err) => {
       if (err) {
         reject(err);
       }
-      //开始数据操作
+      // 开始数据操作
       connection.query(sql, params, (err, results, fields) => {
         if (err) {
           reject(err);
         }
 
-        //停止链接数据库，必须在查询语句后，要不然一调用这个方法，就直接停止链接，数据操作就会失败
+        // 停止链接数据库，必须在查询语句后，要不然一调用这个方法，就直接停止链接，数据操作就会失败
         connection.end((err) => {
           if (err) {
             console.log("关闭数据库连接失败！");
@@ -110,11 +110,8 @@ module.exports = (sql, params) => {
           }
         });
 
-        //将查询出来的数据返回给回调函数
-        resolve({
-          results: results,
-          fields: fields,
-        });
+        // 将查询出来的数据返回给回调函数
+        resolve([results, fields]);
       });
     });
   });
@@ -128,17 +125,17 @@ const dbConnect = require("../utils/db");
 
 router.get("/userList", async (req, res, next) => {
   try {
-    const { results } = await dbConnect("SELECT * FROM sys_user");
+    const [results] = await dbConnect("SELECT * FROM sys_user");
     res.send({ results });
   } catch (error) {
-    res.send({ msg: msg.serviceError, code: 500 });
+    res.send({ message: msg.operateFail, code: 500 });
   }
 });
 ```
 
-打开浏览器访问 http://localhost:8082/users/userList
+打开浏览器访问或在前端项目请求该地址试试： http://localhost:8082/users/userList
 
-### 问题
+### Mac 使用 Navicat 连接 Mysql 问题
 
 ##### 问题描述：Mac 使用 Navicat 客户端连接 Mysql 报错：Client does not support authentication protocol requested by server; consider upgrading MySQL client
 
@@ -281,7 +278,9 @@ router.post("/xxx", (req, res, next) => {
 });
 ```
 
-### 生成在线 API 接口文档
+## 生成在线 API 接口文档
+
+### 使用 apidoc（慎用：已暂停维护）
 
 安装插件
 
@@ -315,19 +314,230 @@ apidoc -i routes/ -o public/apidoc/ && cross-env NODE_ENV=development nodemon in
 
 有了这些配置后，对接口增加注释，即可生成文档
 
-接口上方的注释部分就是 apidoc 的注解部分，信息解释：
+接口上方的注释部分就是 apidoc 的注解部分，信息解释（[更详细的解释请查看文档](https://apidocjs.com/)）：
 
 ```js
-（1）@api {post} /api/user/info 用户信息
-{post/get}请求方式；/api/user/info 接口地址；接口名字
-（2）@apiName 接口名字
-（3）@apiGroup 接口分组
-（4）@apiDescription 描述
-（5）@apiParam 请求参数
-（6）@apiParamExample 请求参数示例
-（7）@apiSuccess 响应数据
-（8）@apiSuccessExample 响应数据示例
+/**
+ *
+ * @api {method} path title
+ * @api {get} /test
+ * @apiName 接口名字
+ * @apiGroup 接口分组
+ * @apiDescription 接口描述
+ * @apiVersion 1.0.0
+ *
+ * @apiParam 请求参数
+ * @apiParamExample 请求参数示例
+ * {
+ *    "id": "xxx"
+ * }
+ *
+ * @apiBody 请求主体
+ * @apiBody {String} phone 手机号
+ *
+ * @apiSuccess {Object} 响应数据:
+ * @apiSuccessExample {Object} 响应数据示例:
+ * {
+ *   "data": {
+ *     "nick_name": "努力的小白",
+ *     "avatar_url": "头像URL",
+ *     "gender": "性别"
+ *  }
+ * }
+ *
+ */
+router.get("/test", async (req, res, next) => {
+  res.send({ message: "操作成功！", code: 200, data: [] });
+});
 ```
+
+### 使用 swagger
+
+1. 安装所需的包
+
+```
+npm install swagger-jsdoc swagger-ui-express
+```
+
+2. 新建文件 swagger.js
+
+```js
+// swagger在线网站：https://editor.swagger.io/#
+
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+const path = require("path");
+
+const swaggerInit = (app, baseUrl) => {
+  //options是swaggerJSDoc的配置项
+  const options = {
+    swagger: "2.0",
+    //definition是swagger的配置项
+    definition: {
+      info: {
+        title: "Node Swagger API",
+        version: "1.0.0",
+        description: "Demonstrating how to describe a RESTful API with Swagger",
+      },
+    },
+    // 重点，指定 swagger-jsdoc 去哪个路由下收集 swagger 注释
+    apis: [path.join(process.cwd(), "/routes/*.js")],
+  };
+  const swaggerSpec = swaggerJSDoc(options);
+
+  // 可以访问 xxx/swagger.json 看到生成的swaggerJSDoc
+  app.get("/swagger.json", function (req, res) {
+    res.setHeader("Content-Type", "application/json");
+    res.send(swaggerSpec);
+  });
+
+  // 可以访问 xxx/api-docs 看到生成的swagger接口文档
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+};
+
+module.exports = swaggerInit;
+```
+
+3. 在 app.js 中引入 swagger.js 文件
+
+```js
+const app = express();
+
+//swagger imports
+//这里填你的swagger文件所在路径
+const swaggerInit = require("./swagger.js");
+swaggerInit(app);
+```
+
+4. 写一个 swagger 格式的接口
+
+```js
+const express = require("express");
+const router = express.Router();
+
+/**
+ * @swagger
+ * /api/getPetList:
+ *  get:
+ *   tags:
+ *     - pet
+ *   description: Multiple name values can be provided with comma separated strings
+ *   parameters:
+ *     - name: name
+ *       in: query
+ *       description: name values that need to be considered for filter
+ *       required: false
+ *   responses:
+ *     '200':
+ *       description: successful operation
+ *     '400':
+ *       description: Invalid name value
+ */
+router.get("/api/getPetList", (req, res, next) => {
+  const { query } = req;
+  res.send({ message: "操作成功！", code: 200, data: [] });
+});
+
+module.exports = router;
+```
+
+大功告成！现在你可以通过访问 http://IP:端口/api-docs/。
+
+附上其它请求方式的 swagger 写法：
+
+```js
+/**
+ * @swagger
+ * definitions:
+ *   Pet:
+ *     properties:
+ *       name:
+ *         type: string
+ *       age:
+ *         type: integer
+ *       sex:
+ *         type: string
+ */
+
+/**
+ * @swagger
+ * /api/petAdd:
+ *   post:
+ *     tags:
+ *       - pet
+ *     description: Creates a new pet
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: pet
+ *         description: pet object
+ *         in: body
+ *         required: true
+ *         schema:
+ *           $ref: '#/definitions/Pet'
+ *     responses:
+ *       200:
+ *         description: Successfully created
+ */
+router.post("/api/petAdd", (req, res, next) => {
+  const { query } = req;
+  res.send({ message: "操作成功！", code: 200, data: [] });
+});
+
+/**
+ * @swagger
+ * /api/puppies/{id}:
+ *   put:
+ *     tags:
+ *      - pet
+ *     description: Updates a single pet
+ *     produces:
+ *      - application/json
+ *     parameters:
+ *      - name: pet
+ *        description: Fields for the pet resource
+ *        in: body
+ *        schema:
+ *         type: array
+ *         $ref: '#/definitions/Pet'
+ *     responses:
+ *       200:
+ *         description: Successfully updated
+ */
+
+router.put("/api/petEdit", (req, res, next) => {
+  const { query } = req;
+  res.send({ message: "操作成功！", code: 200, data: [] });
+});
+
+/**
+ * @swagger
+ * /api/petDelete:
+ *   delete:
+ *     tags:
+ *       - pet
+ *     description: Deletes a single pet
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         description: pet's id
+ *         in: path
+ *         required: true
+ *         type: integer
+ *     responses:
+ *       200:
+ *         description: Successfully deleted
+ */
+router.put("/api/petDelete", (req, res, next) => {
+  const { query } = req;
+  res.send({ message: "操作成功！", code: 200, data: [] });
+});
+```
+
+当然，如果你觉得这种注释很难写，有更推荐的方案[express-swagger-generator](https://www.npmjs.com/package/express-swagger-generator)。
+
+## 其他
 
 ### 生成唯一标识符 ID
 
