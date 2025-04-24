@@ -112,6 +112,7 @@ export default sidebar({
     "fetch",
     "并发、并行、异步、同步",
     "promise",
+    "AbortController和AbortSignal",
     "generator",
     "async await",
     "事件循环机制",
