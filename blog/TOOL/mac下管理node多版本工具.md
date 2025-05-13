@@ -67,3 +67,11 @@ node -v
       解决：先把之前安装的`node`全部卸载掉，再使用`n`安装并管理`node`。
     - 问题 2：使用`n`相关命令，如果报错权限不足，需要在命令前加上`sudo`。\
       比如：`sudo n stable`。
+
+## 安装 node 时`Invalid Drive: D:\`问题
+
+1. 注册表可以用`win+r`打开运行窗口。
+2. 输入`regedit`打开。
+3. 然后找到这个路径`HKEY_LOCAL_MACHINE\SOFTWARE\Node.js`。
+4. 就会看到这里面有之前安装的盘符路径。
+5. 把 Node.js 这个节点删了就行，再次安装就不会报错了。

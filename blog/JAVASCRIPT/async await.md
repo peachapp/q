@@ -72,6 +72,53 @@ chuanxing();
 bingxing();
 ```
 
+## `await`使用时的陷阱
+
+陷阱 1：
+
+```js
+async function f() {
+  const a = await fetch("http://...post1");
+  const b = await fetch("http://...post2");
+
+  //修改
+  const promiseA = fetch("http://...post1");
+  const promiseB = fetch("http://...post2");
+  const [a, b] = await Promise.all([promiseA, promiseB]);
+}
+```
+
+这样的写法，会打破两个`fetch`的并行，需等到第一个任务完成后才开始执行第二个任务,我们可以用`.all`将`promise`组合起来，然后再用`await`，这样程序的运行效率能够提升一倍。
+
+陷阱 2：
+
+```js
+async function f() {
+  [1, 2, 3].forEach(async (i) => {
+    await someAsyncOperation();
+  });
+}
+
+//修改
+const promises = [
+  someAsyncOperation(),
+  someAsyncOperation(),
+  someAsyncOperation(),
+];
+
+for await (let result of promises) {
+  //...
+}
+
+f();
+```
+
+在循环中使用异步操作是不能使用`forEach`或者`map`这一类方法的，如上面代码中，`forEach`会立刻返回，不会等到所有异步操作都执行完毕。可以使用传统的`for`循环解决。
+
+陷阱 3：
+
+不能在全局或普通函数中使用`await`，其只能被使用在异步函数中（`async function`）。
+
 ## `promise`和`async await`是为了解决什么问题
 
 `promise`和`async await`都是`es6`的新增特性，都是处理异步问题的好办法。

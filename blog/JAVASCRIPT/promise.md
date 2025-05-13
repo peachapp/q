@@ -42,6 +42,46 @@
 2. 可以将异步操作队列化，按照期望的顺序执行，返回符合预期的结果。
 3. 可以在对象之间传递和操作`Promise`，帮助我们处理队列。
 
+## promise 常见的 API
+
+### `Promise`构造函数：`Promise(excutor){}`
+
+- `excutor`函数：同步执行`(resolve, reject) => {}`。
+- `resolve`函数：内部定义成功时调用的函数 `value => {}`。
+- `reject`函数：内部定义失败时调用的函数 `reason => {}`。
+- 说明：`excutor`会在`Promise`内部立即同步回调，异步操作在执行器中执行。
+
+### `Promise.prototype.then`方法：`(onResolved, onRejected) => {}`
+
+- `onResolved`函数：成功的回调函数 `value => {}`。
+- `onRejected`函数：失败的回调函数 `reason => {}`。
+- 说明：指定用于得到成功`value`的成功回调和用于得到失败`reason`的失败回调并返回一个新的`promise`对象。
+
+### `Promise.prototype.catch`方法：`(onRejected) => {}`
+
+- `onRejected`函数：失败的回调函数`reason => {}`。
+- 说明：`then()`的语法糖，相当于：`then(undefined, onRejected)`。
+
+### `Promise.resolve`方法：`(value) => {}`
+
+- `value`：成功的数据或`promise`对象。
+- 说明：返回一个成功/失败的`promise`对象。
+
+### `Promise.reject`方法：`(reason) => {}`
+
+- `reason`：失败的原因。
+- 说明：返回一个失败的`promise`对象。
+
+### `Promise.all(iterable)`方法：`(promises) => {}`
+
+- `promises`：包含`n个promise`的数组。
+- 说明：这个方法返回一个新的`promise`对象，该`promise`对象在`iterable`参数对象里所有的`promise`对象都成功的时候才会触发成功，一旦有任何一个`iterable`里面的`promise`对象失败则立即触发该`promise`对象的失败。这个新的`promise`对象在触发成功状态以后，会把一个包含`iterable`里所有`promise`返回值的数组作为成功回调的返回值，顺序跟`iterable`的顺序保持一致；如果这个新的`promise`对象触发了失败状态，它会把`iterable`里第一个触发失败的`promise`对象的错误信息作为它的失败错误信息。`Promise.all`方法常被用于处理多个`promise`对象的状态集合。
+
+### `Promise.race`方法：`(promises)=> {}`
+
+- `promises`：包含`n个promise`的数组。
+- 说明：返回一个新的`promise`，第一个完成的`promise`的结果状态就是最终的结果状态。看起来`race`方法似乎没什么特别的用处，但在处理 Web 服务器中的超时逻辑时却十分方便，例如我们为一个`Promise`（可能是一个数据库操作）定义了`100ms`的执行时限，如果耗时超过这个时间就返回一个超时错误，在这种情况下就可以考虑使用`race`方法。
+
 ## `Promise.all`和`Promise.allSettled`
 
 - `Promise.all`需要所有`promise`都成功时才`resolve`或者有一个失败时即`reject`。

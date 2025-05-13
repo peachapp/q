@@ -74,6 +74,8 @@ export default sidebar({
     "经常遇到的浏览器兼容性问题",
     "设备像素、css 像素、设备独立像素、dpr、ppi",
     "layout viewport、visual viewport 和 ideal viewport",
+    "大厂是怎么做移动端适配的",
+    "6种移动端1px解决方案",
   ],
   "/JAVASCRIPT/": [
     "数据类型",
@@ -108,7 +110,9 @@ export default sidebar({
     "常见的请求方式",
     "跨域",
     "fetch",
+    "并发、并行、异步、同步",
     "promise",
+    "AbortController和AbortSignal",
     "generator",
     "async await",
     "事件循环机制",
@@ -119,12 +123,14 @@ export default sidebar({
     "移动端上拉加载下拉刷新",
     "WebWorker",
     "WebSocket",
+    "IntersectionObserver",
     "图片懒加载",
     "分片上传",
     "分片加载",
     "localhost和127.0.0.1的区别",
     "从输入一个url到浏览器页面展示经历哪些过程",
     "页面重定向",
+    "URL地址转码与解码",
     "捕获异常",
     "前端监控",
     "进程和线程",
@@ -230,7 +236,10 @@ export default sidebar({
   "/WEBGL/": [],
   "/ECHARTS/": [],
   // 工具
-  "/TOOL/": ["mac下管理node多版本工具"],
+  "/TOOL/": [
+    "mac下管理node多版本工具",
+    "git分支管理"
+  ],
   // 产品与UI设计
   "/产品与UI设计/": [
     "figma",
@@ -268,6 +277,7 @@ export default sidebar({
     "服务端渲染（SSR）与前后端同构技术原理揭秘",
     "前端大屏",
     "前端直播技术",
+    "base64、url、blob互相转换",
   ],
   "/PHP/": [
     "基础知识",
