@@ -188,6 +188,7 @@ export default sidebar({
     "vue性能优化",
     "vue首屏渲染优化",
     "将package.json中的所有依赖项更新到最新版本",
+    "vue项目中遇到的困难"
   ],
   "/REACT/": [
     "对react的理解",
