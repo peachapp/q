@@ -28,3 +28,7 @@
    - 可选配置选项。
 6. `computed api`。
 7. `Teleport`传送门。
+
+[vue2 git 源码](https://github1s.com/vuejs/vue/blob/main)
+
+[vue3 git 源码](https://github1s.com/vuejs/core/blob/main)
