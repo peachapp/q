@@ -10,6 +10,14 @@
 2. 逻辑复用：在`Options API`中，复用逻辑通常需要通过`mixins`或高阶组件实现，但这些方式可能导致命名冲突和关系不清晰（模版中的数据来源不清晰）。`Composition API`中的函数可以像普通`JavaScript`函数一样被复用，无需担心命名冲突。
 3. 更好的`TypeScript`支持：`vue3`与`TypeScript`的集成更加紧密，而`Composition API`的函数式编程风格更适合 `TypeScript`的类型推断和静态检查。
 
+`Composition API`的优势：
+
+- 在 vue2 中采用的是`Options API`，用户提供的`data`、`props`、`methods`、`computed`、`watch`等属性（用户编写复杂业务逻辑会出现反复横跳问题）。
+- vue2 中所有的属性都是通过`this`访问，`this`存在指向明确问题。
+- Vue2 中很多未使用方法或属性依旧会被打包，并且所有全局 API 都在 Vue 对象上公开。`Composition API`对`tree-shaking`更加友好，代码也更容易压缩。
+- 组件逻辑共享问题，vue2 采用 mixins 实现组件之间的逻辑共享，但是会有数据来源不明确、命名冲突等问题。vue3 采用`Composition API`提取公共逻辑非常方便。
+- 简单的组件仍然可以采用`Options API`进行编写，`Composition API`在复杂的逻辑中有着明显的优势。
+
 ## `Composition API`的核心概念
 
 1. `reactive`和`ref`：这两个函数用于创建响应式数据。`reactive`用于创建响应式对象，而`ref`用于创建响应式引用。它们都是`vue3`响应式系统的核心。

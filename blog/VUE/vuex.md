@@ -150,6 +150,27 @@ export default {
 
 模块化`vuex`，可以让每一个模块拥有自己的`State`、`Getters`、`Mutations`、`Actions`, 使得结构非常清晰，方便管理。
 
+```js
+// 自动注册模块
+
+const files = require.context(".", true, /\.js$/);
+const modules = {};
+files.keys().forEach((key) => {
+  const path = key.replace(/\.\/|\.js/g, "");
+  if (path == "index") return; // 自己不做任何处理
+  let [namespace, type] = path.split("/"); // [home, actions]
+  if (!modules[namespace]) {
+    modules[namespace] = {
+      namespaced: true, // 都增加了命名空间
+    };
+  }
+
+  // 所有的action mutation都被增加到了全局上
+  modules[namespace][type] = files(key).default; // 获取文件导出的结果
+});
+export default modules;
+```
+
 ## 修改数据的方法
 
 - `dispatch`：用于触发`actions`，它接收一个`action`的`type`和`payload`作为参数。\
@@ -159,8 +180,8 @@ export default {
 
 ## `Mutations`和`Actions`的区别
 
-- `Mutations`：都是同步事务。
-- `Actions`：提交的是`Mutations`，而不是直接更改状态，可以包含异步操作。
+- `Mutations`：用来修改`state`。严格模式下，在非`Mutations`中修改数据会发生异常。都是同步事务，不可以处理异步逻辑。
+- `Actions`：可以处理异步逻辑，获取数据后将结果提交给`Mutations`，而不是直接更改状态。`Actions`中可以进行多次`commit`操作，也可以调用`Actions`。`dispatch`时会将`Actions`包装成`promise`，而`Mutations`则没有进行包装。
 
 ## `vuex`数据持久化
 
@@ -168,3 +189,20 @@ export default {
 
 1. 使用`cookie`或`localStorage`做持久化存储。具体做法是在`vuex`中数据改变的时候把数据拷贝一份保存到`cookie`或`localStorage`里面，刷新之后，如果`cookie`或`localStorage`里有保存的数据，取出来作为`store`中`state`的初始数据。
 2. 使用`vue`插件`vuex-persist`或`vuex-persistedstate`或`vuex-plugin-persistedstate`实现数据、状态持久化。
+3. 每次获取数据前检测 vuex 数据是否存在，不存在则发请求重新拉取数据，存储到 vuex 中。
+
+## vuex 缺点
+
+vuex 中 store 只有一份，复杂的数据需要依赖于模块。vuex 状态是一个树状结构，最终会将模块的状态挂载到根模块上。
+
+- 模块和状态的名字冲突。
+- 数据不够扁平化，调用的时候过长。
+- 更改状态 mutation 和 action 的选取。
+- 模块需要增加 namespaced。
+- 对 TS 支持并不友好。
+
+## vuex 原理
+
+对于 vuex3 核心就是通过`new Vue()`创建了一个 vue 实例，进行数据共享。
+
+对于 vuex4 核心就是通过创建一个响应式对象进行数据共享`reactive()`。
