@@ -286,7 +286,8 @@ export default sidebar({
   // 工具
   "/TOOL/": [
     "mac下管理node多版本工具",
-    "git分支管理"
+    "git分支管理",
+    "MCP"
   ],
   // 产品与UI设计
   "/产品与UI设计/": [
