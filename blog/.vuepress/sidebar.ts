@@ -272,6 +272,7 @@ export default sidebar({
     "weixinjs-sdk",
     "微信小程序生命周期",
     "微信小程序支付详细流程",
+    "微信小程序保存图片到系统相册",
     "小程序分包",
   ],
   // 后端
@@ -303,7 +304,9 @@ export default sidebar({
     "button中嵌套navigator不能跳转",
     "h5唤起app",
     "文件夹上传",
+    "iOS",
     "password input浏览器自动填充密码",
+    "改变input输入框placeholder的颜色",
     "js超过Number最大值的数怎么处理",
     "如何解决页面请求接口大规模并发问题",
     "大文件上传",
